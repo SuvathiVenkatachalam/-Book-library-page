@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Catalog</title>
+    <style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .book {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .book img {
+            max-width: 100px;
+            float: left;
+            margin-right: 10px;
+        }
+        .book h2 {
+            margin-top: 0;
+        }
+        .book p {
+            margin: 5px 0;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-container input[type=text] {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Library Catalog</h1>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search for book titles...">
+    </div>
+
+    <div id="bookList">
+        <div class="book">
+            <img src="book1.jpg" alt="Book 1 Cover">
+            <h2>Book Title 1</h2>
+            <p><strong>Author:</strong> Author Name 1</p>
+            <p><strong>Published:</strong> 2023</p>
+            <p><strong>ISBN:</strong> XXXXXXXXXXXX</p>
+            <p>Description of the book goes here...</p>
+        </div>
+
+        <div class="book">
+            <img src="book2.jpg" alt="Book 2 Cover">
+            <h2>Book Title 2</h2>
+            <p><strong>Author:</strong> Author Name 2</p>
+            <p><strong>Published:</strong> 2021</p>
+            <p><strong>ISBN:</strong> XXXXXXXXXXXX</p>
+            <p>Description of the book goes here...</p>
+        </div>
+    </div>
+
+    <script>
+        function searchBooks() {
+            
+            var input, filter, books, book, title, i;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            books = document.getElementById('bookList').getElementsByClassName('book');
+
+        
+            for (i = 0; i < books.length; i++) {
+                book = books[i];
+                title = book.getElementsByTagName('h2')[0];
+                if (title.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    book.style.display = '';
+                } else {
+                    book.style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
